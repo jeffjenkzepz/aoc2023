@@ -6,7 +6,13 @@ My solutions for [Advent of Code 2023](https://adventofcode.com/2023).
 
 If you wanna fork this to use yourself you need to do a couple of things:
 
-1. Make a copy of `.env.example` to `.env`. You need to add your session cookies from your own authenticated session on adventofcode.com. You can do this by logging in, then checking the request headers. Copy the contents of the `Cookie` request header and paste over the `COOKIE` value in the `.env` file. This will allow you to fetch your input for each puzzle directly from the adventofcode server.
+1. Make a copy of `.env.example` to `.env`. You need to add your session cookies from your own authenticated session on adventofcode.com. You can get this by logging in, then checking the request headers. Copy the contents of the `Cookie` request header and paste over the `COOKIE` value in the `.env` file. The cookies look something like this:
+
+```
+_ga=GAxxx; session=xxx; _gid=xxx; _ga_XXX=xxx
+```
+
+This will allow you to fetch your input for each puzzle directly from the adventofcode server. 
 
 2. To get a puzzle going you can simply make a new folder for the day `dayX` and then a new file for the puzzle `x.ts` and copy the following boiler to get yourself going:
 
