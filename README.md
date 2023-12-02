@@ -1,6 +1,6 @@
 # aoc2023
 
-My solutions for Advent of Code 2023. To run a solution, run the following command:
+My solutions for Advent of Code 2023.
 
 ## Fork it
 
@@ -30,11 +30,11 @@ const puzzle = async () => {
 puzzle();
 ```
 
-Update the fetchInput method to use the correct input URL for the day. If you wan to test with a smaller input you can coment out the fetch code and use an inline string.
+Update the fetchInput method to use the correct input URL for the day. If you want to test with a smaller input you can comment out the fetch code and use an inline string.
 
 ## Run it
 
-To get started make sure you have your environment cookie set up per the above point 1.
+To get started make sure you have your environment cookie set up per point 1 above.
 
 Run `npm i` to set up. Then you can run each individual puzzle in dev mode using the following command:
 
