@@ -4,13 +4,13 @@
     "target": "es2016",
     "lib": ["es6"],
     /* Modules */
-    "module": "commonjs",  
+    "module": "commonjs",
     "rootDir": "src",
     "resolveJsonModule": true,
     /* JavaScript Support */
-    "allowJs": true, 
+    "allowJs": true,
     /* Emit */
-    "outDir": "build", 
+    "outDir": "build",
     /* Interop Constraints */
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
@@ -18,6 +18,6 @@
     "strict": true,
     "noImplicitAny": true,
     /* Completeness */
-    "skipLibCheck": true 
+    "skipLibCheck": true
   }
 }
