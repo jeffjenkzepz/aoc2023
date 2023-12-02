@@ -45,7 +45,7 @@ To get started make sure you have your environment cookie set up per point 1 abo
 Run `npm i` to set up. Then you can run each individual puzzle in dev mode using the following command:
 
 ```
-npm run dev --file=./src/day{DAY_NUMBER}/{SOUTION_NUMBER}.ts
+npm run dev --file=./src/day{DAY_NUMBER}/{SOLUTION_NUMBER}.ts
 ```
 
 This will continue to run the code whenever the file is changed.
