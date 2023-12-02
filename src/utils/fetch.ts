@@ -11,5 +11,5 @@ export const fetchInput = async (path: string): Promise<string> => {
 
   const data = await response.text();
 
-  return data;
+  return data.trim();
 };
