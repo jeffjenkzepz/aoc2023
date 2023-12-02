@@ -1,7 +1,7 @@
 import { fetchInput } from '../utils/input';
 import { isParsableAsInteger } from './utils';
 
-const input: string = fetchInput('src/day1/1.input.txt');
+const input: string = fetchInput('src/day1/input.txt');
 
 const inputArr: string[] = input.split('\n');
 const values: string[] = inputArr.map((line) => {

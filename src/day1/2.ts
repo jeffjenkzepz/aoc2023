@@ -1,7 +1,7 @@
 import { fetchInput } from '../utils/input';
 import { isParsableAsInteger } from './utils';
 
-const input: string = fetchInput('src/day1/1.input.txt');
+const input: string = fetchInput('src/day1/input.txt');
 const numberRegex: RegExp = /(one|two|three|four|five|six|seven|eight|nine)/g;
 const numberRegexReverse: RegExp =
   /(eno|owt|eerht|ruof|evif|xis|neves|thgie|enin)/g;
