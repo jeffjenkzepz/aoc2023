@@ -18,7 +18,6 @@ This will allow you to fetch your input for each puzzle directly from the advent
 
 ```JavaScript
 import { fetchInput } from '../utils/fetch';
-import { isParsableAsInteger } from './utils';
 
 const puzzle = async () => {
   const input: string = await fetchInput(
