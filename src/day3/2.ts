@@ -104,6 +104,7 @@ const puzzle = async () => {
     numbers.push(...rowNumbers);
   });
 
+  // lets build a record of just the gears and their values for processing
   const gears: Record<string, string[]> = {};
   numbers.filter((num) => !!num.gears).forEach((num) => {
     num.gears!.forEach((gear) => {
@@ -113,11 +114,11 @@ const puzzle = async () => {
     });
   });
 
-  // console.log(numbers);
   Object.keys(gears).forEach((gear) => {
     console.log(gear, gears[gear]);
   });
 
+  // lets sum the gears, we can exclude any that only have one number
   const num = Object.keys(gears).filter((gear) => gears[gear].length > 1).reduce((acc, gear) => {
     return acc + parseInt(gears[gear][0]) * parseInt(gears[gear][1]);
   }, 0);
