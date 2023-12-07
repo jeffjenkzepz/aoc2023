@@ -24,12 +24,17 @@ const puzzle = async () => {
     `https://adventofcode.com/2023/day/X/input`
   );
 
+  const start = performance.now();
+
   // const input: string = `1abc2
   // pqr3stu8vwx
   // a1b2c3d4e5f
   // treb7uchet`;
 
   // YOUR PUZZLE CODE GOES HERE
+
+  const end = performance.now();
+  console.log(`Took ${(end - start).toFixed(2)}ms`);
 }
 
 puzzle();

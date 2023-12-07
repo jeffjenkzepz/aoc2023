@@ -5,6 +5,8 @@ const puzzle = async () => {
     `https://adventofcode.com/2023/day/6/input`
   );
 
+  const start = performance.now();
+
   //   const input: string = `Time:      7  15   30
   //   Distance:  9  40  200`;
 
@@ -40,6 +42,9 @@ const puzzle = async () => {
   const result = possibleWins.reduce((acc, wins) => acc * wins, 1);
 
   console.log(result);
+
+  const end = performance.now();
+  console.log(`Took ${(end - start).toFixed(2)}ms`);
 };
 
 puzzle();

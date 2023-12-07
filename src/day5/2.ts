@@ -76,6 +76,7 @@ const puzzle = async () => {
     // lets do a reverse lookup by working backwards through the maps
     // starting with the lowest possible destingation and checking if
     // the resulting seed is in one of our seed pairs
+    // retruns the lowest location or null if no match
     lowest = reverseLookup(maps, seedPairs, count);
 
     // if we find a match we will go back to the previous increment
