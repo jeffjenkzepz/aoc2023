@@ -9,5 +9,37 @@ export const CONNECTORS: Record<Connector, Direction[]> = {
   F: ['S', 'E'],
   '.': [],
   S: [],
-    X: []
+  X: []
+};
+
+export const CONNECTOR_INSIDE_DIRECTION: 
+  Record<Connector, Partial<Record<Direction, Direction[]>>>
+ = {
+  '|': {
+    N: ['W'],
+    S: ['E']
+  },
+  '-': {
+    E: ['N'],
+    W: ['S']
+  },
+  L: {
+    N: ['W', 'S'],
+    E: []
+  },
+  J: {
+    N: [],
+    W: ['S', 'E']
+  },
+  '7': {
+    S: ['E', 'N'],
+    W: []
+  },
+  F: {
+    S: [],
+    E: ['N', 'W']
+  },
+  '.': {},
+  S: {},
+  X: {}
 };
