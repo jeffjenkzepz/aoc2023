@@ -1,4 +1,5 @@
 import { fetchInput } from '../utils/fetch';
+import { wait } from '../utils/wait';
 import { MOVES } from './constants';
 import { Direction, Grid, Position, Tile } from './types';
 
@@ -54,7 +55,18 @@ const nextPosition = (
   return nextPositions;
 };
 
-let makeMove = (
+const directionTile = (direction: Direction): string => {
+  if (direction === 'UP') {
+    return '^';
+  } else if (direction === 'DOWN') {
+    return 'v';
+  } else if (direction === 'LEFT') {
+    return '<';
+  }
+  return '>';
+};
+
+const makeMove = (
   grid: Grid,
   position: Position = { x: 0, y: 0 },
   direction: Direction = 'RIGHT'
@@ -68,6 +80,7 @@ let makeMove = (
       direction: direction
     }
   ];
+  const gridAnimation: string[][] = grid.map((row) => [...row]);
   const visited = new Set<string>();
 
   while (queue.length) {
@@ -78,6 +91,8 @@ let makeMove = (
       position: Position;
       direction: Direction;
     } = queue.shift()!;
+    gridAnimation[position.y][position.x] = directionTile(direction);
+
     visited.add(`${position.x},${position.y}-${direction}`);
     const tile: Tile = grid[position.y][position.x]!;
     const nextPositions = nextPosition(

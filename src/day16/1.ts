@@ -55,49 +55,63 @@ const nextPosition = (
   return nextPositions;
 };
 
-let makeMove = async (
+const directionTile = (direction: Direction): string => {
+  if (direction === 'UP') {
+    return '^';
+  } else if (direction === 'DOWN') {
+    return 'v';
+  } else if (direction === 'LEFT') {
+    return '<';
+  }
+  return '>';
+}
+
+const makeMove = (
   grid: Grid,
-  heatGrid: HeatGrid,
   position: Position = { x: 0, y: 0 },
   direction: Direction = 'RIGHT'
 ) => {
-  await wait(10);
-  heatGrid[position.y][position.x] =
-    heatGrid[position.y][position.x] >= 9
-      ? 9
-      : heatGrid[position.y][position.x] + 1;
-  // heatGrid.forEach((row) => {
-  //   console.log(row.join(''));
-  // });
+  const queue: {
+    position: Position;
+    direction: Direction;
+  }[] = [
+    {
+      position: position,
+      direction: direction
+    }
+  ];
+  const gridAnimation: string[][] = grid.map((row) => [...row]);
+  const visited = new Set<string>();
 
-  const heatCount = heatGrid.reduce((acc, row) => {
-    return (
-      acc +
-      row.reduce((acc, heat) => {
-        if (heat === 0) return acc;
-        return acc + 1;
-      }, 0)
+  while (queue.length) {
+    const {
+      position,
+      direction
+    }: {
+      position: Position;
+      direction: Direction;
+    } = queue.shift()!;
+    gridAnimation[position.y][position.x] = directionTile(direction);
+
+    visited.add(`${position.x},${position.y}-${direction}`);
+    const tile: Tile = grid[position.y][position.x]!;
+    const nextPositions = nextPosition(
+      position,
+      direction,
+      tile,
+      grid[0].length,
+      grid.length
     );
-  }, 0);
-
-  console.log('heatCount', heatCount);
-
-  const tile: Tile = grid[position.y][position.x]!;
-  const nextPositions = nextPosition(
-    position,
-    direction,
-    tile,
-    grid[0].length,
-    grid.length
-  );
-
-  if (nextPositions.length === 0) {
-    return;
+    queue.push(
+      ...nextPositions.filter(
+        (nextPosition) =>
+          !visited.has(
+            `${nextPosition.position.x},${nextPosition.position.y}-${nextPosition.direction}`
+          )
+      )
+    );
   }
-
-  nextPositions.forEach((nextPosition) => {
-    makeMove(grid, heatGrid, nextPosition.position, nextPosition.direction);
-  });
+  return new Set([...visited].map((v: string) => v.split('-')[0])).size;
 };
 
 const puzzle = async () => {
@@ -145,7 +159,9 @@ const puzzle = async () => {
     console.log(row.join(''));
   });
 
-  makeMove(grid, heatGrid);
+  console.log(makeMove(grid));
+
+
 
   const end = performance.now();
   console.log(`Took ${(end - start).toFixed(2)}ms`);
